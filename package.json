@@ -1,10 +1,25 @@
 {
-  "name": "my-starter-ts-npm-cli-and-lib",
-  "version": "0.1.2",
-  "description": "Typescript で CLI とライブラリの npm パッケージを作成するためのスターター。",
+  "name": "remakr-qrcode",
+  "version": "0.1.0",
+  "description": "convert \"qrcode:\" to dataURL",
   "license": "MIT",
-  "keywords": [],
+  "author": "hankei6km <hankei6km@gmail.com> (https://github.com/hankei6km)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hankei6km/remark-qrcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hankei6km/remark-qrcode/issues"
+  },
+  "keywords": [
+    "qrcode",
+    "unified",
+    "mdast",
+    "markdown"
+  ],
   "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -13,11 +28,10 @@
     "count": "dist/main.js"
   },
   "scripts": {
-    "start": "tsc && node dist/main.js",
-    "start:watch": "nodemon --watch src --ext ts --exec ts-node src/main.ts",
-    "build": "tsc",
-    "test": "jest",
-    "clean": "rm dist/*",
+    "start": "npm run build && node dist/main.js",
+    "build": "npm run clean && tsc && rimraf dist/test && mv dist/src/* dist/ && rimraf dist/src",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "clean": "rimraf \"dist/*\"",
     "upgrade-interactive": "npm-check --update",
     "csb:test": "npm test -- --runInBand --watchAll"
   },
@@ -26,13 +40,13 @@
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
-    "@types/node": "^16.11.1",
+    "@types/node": "^16.11.4",
     "@types/yargs": "^17.0.4",
     "jest": "^27.3.1",
     "nodemon": "^2.0.14",
-    "npm-check": "^5.9.2",
+    "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
-    "ts-node": "^10.3.0",
+    "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
 }

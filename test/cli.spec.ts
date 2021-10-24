@@ -1,5 +1,6 @@
 import { PassThrough } from 'stream'
-import cli from '../src/cli'
+import { jest } from '@jest/globals'
+import cli from '../src/cli.js'
 
 describe('cli()', () => {
   it('should return stdout with exitcode=0', async () => {
@@ -17,10 +18,10 @@ describe('cli()', () => {
       })
     ).toEqual(0)
     expect(outData.mock.calls.length).toEqual(2)
-    expect(outData.mock.calls[0][0].toString('utf8')).toEqual(
+    expect((outData.mock.calls[0][0] as Buffer).toString('utf8')).toEqual(
       'test/assets/test1.txt: 15 chars\n'
     )
-    expect(outData.mock.calls[1][0].toString('utf8')).toEqual(
+    expect((outData.mock.calls[1][0] as Buffer).toString('utf8')).toEqual(
       'test/assets/test2.txt: 17 chars\n'
     )
     expect(errData.mock.calls.length).toEqual(0)
@@ -40,13 +41,13 @@ describe('cli()', () => {
       })
     ).toEqual(1)
     expect(outData.mock.calls.length).toEqual(1)
-    expect(outData.mock.calls[0][0].toString('utf8')).toEqual(
+    expect((outData.mock.calls[0][0] as Buffer).toString('utf8')).toEqual(
       'test/assets/test1.txt: 15 chars\n'
     )
     expect(errData.mock.calls.length).toEqual(2)
-    expect(errData.mock.calls[0][0].toString('utf8')).toEqual(
+    expect((errData.mock.calls[0][0] as Buffer).toString('utf8')).toEqual(
       "Error: ENOENT: no such file or directory, open 'test/assets/fail.txt'"
     )
-    expect(errData.mock.calls[1][0].toString('utf8')).toEqual('\n')
+    expect((errData.mock.calls[1][0] as Buffer).toString('utf8')).toEqual('\n')
   })
 })

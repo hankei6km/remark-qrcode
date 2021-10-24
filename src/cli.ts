@@ -1,5 +1,5 @@
 import { Writable } from 'stream'
-import countChars from './count'
+import countChars from './count.js'
 
 type Opts = {
   filenames: string[]

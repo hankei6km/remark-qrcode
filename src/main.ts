@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import cli from './cli'
-
+import cli from './cli.js'
 ;(async () => {
   const argv = await yargs(hideBin(process.argv))
     .scriptName('count')
