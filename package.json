@@ -1,5 +1,5 @@
 {
-  "name": "remakr-qrcode",
+  "name": "@hankei6km/remakr-qrcode",
   "version": "0.1.0",
   "description": "convert \"qrcode:\" to dataURL",
   "license": "MIT",
@@ -24,11 +24,7 @@
   "files": [
     "dist"
   ],
-  "bin": {
-    "count": "dist/main.js"
-  },
   "scripts": {
-    "start": "npm run build && node dist/main.js",
     "build": "npm run clean && tsc && rimraf dist/test && mv dist/src/* dist/ && rimraf dist/src",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "clean": "rimraf \"dist/*\"",
@@ -36,6 +32,8 @@
     "csb:test": "npm test -- --runInBand --watchAll"
   },
   "dependencies": {
+    "mdast-qrcode": "^0.4.0",
+    "unified": "^10.1.0",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
@@ -44,6 +42,7 @@
     "@types/yargs": "^17.0.4",
     "jest": "^27.3.1",
     "nodemon": "^2.0.14",
+    "remark": "^14.0.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",

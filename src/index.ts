@@ -1,2 +1,2 @@
-import countChars from './count.js'
-export { countChars }
+import { remarkQRCode } from './qrcode.js'
+export default remarkQRCode
