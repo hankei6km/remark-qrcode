@@ -1,5 +1,5 @@
 {
-  "name": "@hankei6km/remakr-qrcode",
+  "name": "@hankei6km/remark-qrcode",
   "version": "0.1.1-pre.0",
   "description": "convert \"qrcode:\" to dataURL",
   "license": "MIT",
