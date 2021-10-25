@@ -1,6 +1,14 @@
 # remark-qrcode
 
-[remark](https://remark.js.org/) plugin to convert URL etc. that contained in Image or Link node.
+Markdown 内の画像またはリンクの URL 等を QR Code へ変換する [remark](https://remark.js.org/) プラグイン。
+
+## Install
+
+npm:
+
+```
+npm install remark-qrcode
+```
 
 ## Usage
 
@@ -46,5 +54,5 @@ MIT License
 
 Copyright (c) 2021 hankei6km
 
-The word "QR Code" is registered trademark of: DENSO WAVE INCORPORATED
+QR コードの商標はデンソーウェーブの登録商標です。
 

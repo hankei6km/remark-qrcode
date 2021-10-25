@@ -1,6 +1,6 @@
 {
-  "name": "remakr-qrcode",
-  "version": "0.1.0",
+  "name": "@hankei6km/remark-qrcode",
+  "version": "0.1.1-pre.1",
   "description": "convert \"qrcode:\" to dataURL",
   "license": "MIT",
   "author": "hankei6km <hankei6km@gmail.com> (https://github.com/hankei6km)",
@@ -17,36 +17,45 @@
     "mdast",
     "markdown"
   ],
-  "main": "dist/index.js",
-  "exports": "./dist/index.js",
+  "main": "dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "bin": {
-    "count": "dist/main.js"
-  },
   "scripts": {
-    "start": "npm run build && node dist/main.js",
-    "build": "npm run clean && tsc && rimraf dist/test && mv dist/src/* dist/ && rimraf dist/src",
+    "build:esm": "tsc && rimraf dist/test && mv dist/src/* dist/ && rimraf dist/src",
+    "build:cjs": "rollup -c rollup.config.js",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "clean": "rimraf \"dist/*\"",
     "upgrade-interactive": "npm-check --update",
     "csb:test": "npm test -- --runInBand --watchAll"
   },
   "dependencies": {
+    "mdast-qrcode": "^0.4.0",
+    "unified": "^10.1.0",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.4",
     "@types/yargs": "^17.0.4",
     "jest": "^27.3.1",
     "nodemon": "^2.0.14",
+    "remark": "^14.0.1",
     "rimraf": "^3.0.2",
+    "rollup": "^2.58.0",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.4"
   }
 }
